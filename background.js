@@ -57,7 +57,7 @@ function handlePagerDutyMsg(msgs) {
     let grafanaEnv = '';
     let kibanaKeyword = '';
     if (detailsMap["alertname"].includes('Cluster') && detailsMap["alertname"].includes('Termination')) {
-        grafanaBoard = "https://grafana.cloud.databricks.com/d/000000086/clusters?&fullscreen"
+        grafanaBoard = "https://grafana.cloud.databricks.com/d/000000086/clusters?"
         if (detailsMap["clusterTerminationReasonCode"] === undefined) {
             kibanaKeyword = "%22CONTAINER_LAUNCH_FAILURE%22";
         } else {
@@ -77,7 +77,7 @@ function handlePagerDutyMsg(msgs) {
         kibanaKeyword = "%22InstanceUpdateMonitor%22"
         grafanaPanel = '24';
     } else if (detailsMap["alertname"].includes("LibrariesApi5xxErrors")) {
-        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard";
+        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard?";
         grafanaEnv = `${detailsMap["env"]}-${detailsMap["cloud"]}-${detailsMap["region"]}`;
         kibanaKeyword = "%22library%22";
     } else if (detailsMap["alertname"].includes("WorkerEnvFetchWrongReplicaAlert")) {
@@ -91,15 +91,15 @@ function handlePagerDutyMsg(msgs) {
         grafanaBoard = "https://grafana.cloud.databricks.com/d/000000086/clusters?";
         kibanaKeyword = "%22restart%22%20AND%20%22ClusterManager%22";
     } else if (detailsMap["alertname"].includes("InstancePoolsApi5xxErrors")) {
-        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard";
+        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard?";
         grafanaEnv = `${detailsMap["env"]}-${detailsMap["cloud"]}-${detailsMap["region"]}`;
         kibanaKeyword = "%22pool%22";
     } else if (detailsMap["alertname"].includes("InstancePoolsApi5xxErrors")) {
-        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard";
+        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard?";
         grafanaEnv = `${detailsMap["env"]}-${detailsMap["cloud"]}-${detailsMap["region"]}`;
         kibanaKeyword = "%22pool%22";
     } else if (detailsMap["alertname"].includes("ClustersApi5xxErrors")) {
-        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard";
+        grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard?";
         grafanaEnv = `${detailsMap["env"]}-${detailsMap["cloud"]}-${detailsMap["region"]}`;
         kibanaKeyword = "%22cluster%22";
     } else if (detailsMap["alertname"].includes("databaseAccessErrorAlert")) {
@@ -107,7 +107,7 @@ function handlePagerDutyMsg(msgs) {
         kibanaKeyword = `%22RDSHiveMetastoreManager%22`;
     }
     const grafanaLink = grafanaBoard === undefined ? "No Grafana Dashboard specified in annotations or incident rules" 
-    : `${grafanaBoard}&var-Environment=${grafanaEnv}&panelId=${grafanaPanel}` + 
+    : `${grafanaBoard}&fullscreen&var-Environment=${grafanaEnv}&panelId=${grafanaPanel}` + 
     `&from=${(timestamps[0].getTime() - 1800000).toString()}` +
     `&to=${(timestamps[1].getTime() + 1800000).toString()}&refresh=30s`;
     kibanaDetails = `https://kibana-${detailsMap["cloud"]}-${detailsMap["region"]}` +
