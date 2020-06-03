@@ -10,4 +10,5 @@
 ## Known Issues
 1. Kibana search keyword only works for Cluster team and Dataplane Platform team alerts for now. 
 2. Refresh is needed to trigger the extension's webpage capture logic.
+3. Can only capture cluster id in Kibana search page, and the cluster ids are not organized well on the popup page.
 
