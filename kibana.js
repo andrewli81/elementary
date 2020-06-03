@@ -5,7 +5,7 @@ const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 function parseKibanaAndSendMessage (evt) {
-    let timeout = 20000;
+    let timeout = 30000;
     console.log(evt);
     sleep(timeout).then(() => {
         const clusterIDs = [];
