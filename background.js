@@ -79,7 +79,7 @@ function handlePagerDutyMsg(msgs) {
     } else if (detailsMap["alertname"].includes("LibrariesApi5xxErrors")) {
         grafanaBoard = "https://grafana.cloud.databricks.com/d/zFKe5ECZz/compute-fabric-api-dashboard?";
         grafanaEnv = `${detailsMap["env"]}-${detailsMap["cloud"]}-${detailsMap["region"]}`;
-        kibanaKeyword = "%22library%22";
+        kibanaKeyword = "%%22libraries%22%20AND%20%22ERROR%22";
     } else if (detailsMap["alertname"].includes("WorkerEnvFetchWrongReplicaAlert")) {
         kibanaKeyword = "%22CentralWorkerEnvironmentProvider%22";
     } else if (detailsMap["alertname"].includes("InstanceLaunchFailuresAlert")) {
