@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"name": "Elementary",
+	"description": "A simple Chrome extension for oncall",
+	"version": "1.0.0",
+	"author": "@andrewli",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+		  "matches": ["https://databricks.pagerduty.com/incidents/*"],
+		  "js": ["pagerduty.js"]
+		},
+		{
+		  "matches": [
+			  "https://kibana-azure-westeurope.cloud.databricks.com/*", 
+			  "https://kibana-azure-eastus2.cloud.databricks.com/*"
+		    ],
+		  "js": ["kibana.js"]
+		}
+	],
+	"permissions": [
+		"tabs",
+		"storage",
+        "http://*/",
+        "https://*/"
+    ],
+	"browser_action": {
+		"default_icon": "icons8-zoom-out-64.png",
+		"default_popup": "popup.html"
+	}
+}
