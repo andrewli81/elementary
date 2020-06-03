@@ -9,5 +9,5 @@
 3. For Kibana, make sure you click on "Kibana Auth" button first, and then on next page, click on "Kibana Search" for keyword and timestamp correlated search.
 ## Known Issues
 1. Kibana search keyword only works for Cluster team and Dataplane Platform team alerts for now. 
- 
+2. Refresh is needed to trigger the extension's webpage capture logic.
 
