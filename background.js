@@ -60,6 +60,8 @@ function handlePagerDutyMsg(msgs) {
         grafanaBoard = "https://grafana.cloud.databricks.com/d/000000086/clusters?"
         if (detailsMap["clusterTerminationReasonCode"] === undefined) {
             kibanaKeyword = "%22CONTAINER_LAUNCH_FAILURE%22";
+        } else if (detailsMap["clusterTerminationReasonCode"] === "UNEXPECTED_LAUNCH_FAILURE") {
+            kibanaKeyword = "%22CLOUD_PROVIDER_LAUNCH_FAILURE%22";
         } else {
             kibanaKeyword = `%22${detailsMap["clusterTerminationReasonCode"]}%22`;
         }
