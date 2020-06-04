@@ -6,7 +6,7 @@
 ## Use
 1. Go to a PagerDuty incident page (for example: [[https://databricks.pagerduty.com/incidents/P35IT0R]])
 2. Click on extension icon to see links generated for the incident.
-3. For Kibana, make sure you click on "Kibana Auth" button first, and then on next page, click on "Kibana Search" for keyword and timestamp correlated search.
+3. For Kibana, make sure you click on "Kibana Auth" button first, and then on next page, click on "Kibana Search" for keyword and timestamp correlated search. (The first time is to authenticate into Kibana in that region using Okta, and the second time is to visit the actual Kibana link with search keywords and time ranges.)
 ## Known Issues
 1. Kibana search keyword only works for Cluster team and Dataplane Platform team alerts for now. 
 2. Refresh is needed to trigger the extension's webpage capture logic. (And it takes a while, since the Kibana page loads for a long time, and we have to wait for the page to finish loading before capturing the webpage)
